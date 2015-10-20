@@ -51,7 +51,8 @@ public class ContactosDataBaseManager {
         + Columnas .IMAGEN + " varchar( 255 ) not null, "
         + Columnas .NOMBRES + " varchar( 30 ) not null, "
         + Columnas .APELLIDOS + " varchar( 30 ), "
-        + Columnas .TELEFONO + " varchar( 25 )";
+        + Columnas .TELEFONO + " varchar( 25 ) "
+    + " ) ";
 
     //-> Contenedor de valores
     //   Algunos métodos de Android requieren que los datos sean pasados en objetos de este tipo.

@@ -47,11 +47,12 @@ public class BackupDataBaseManager {
     //-> Atributo (Constante).
     //   Define la sentencia de creación de la estructura de tabla con SQLite.
     public final static String CREATE_TABLE = "create table if not exists " + TB_NOMBRE + "("
-            + Columnas .ID + " integer primary key autoincrement, "
-            + Columnas .IMAGEN + " varchar( 255 ) not null, "
-            + Columnas .NOMBRES + " varchar( 30 ) not null, "
-            + Columnas .APELLIDOS + " varchar( 30 ), "
-            + Columnas .TELEFONO + " varchar( 25 )";
+        + Columnas .ID + " integer primary key autoincrement, "
+        + Columnas .IMAGEN + " varchar( 255 ) not null, "
+        + Columnas .NOMBRES + " varchar( 30 ) not null, "
+        + Columnas .APELLIDOS + " varchar( 30 ), "
+        + Columnas .TELEFONO + " varchar( 25 )"
+    + " ) ";
 
     //   Define la sentencia de eliminación de la estructura de tabla con SQLite.
     public final static String DELETE_TABLE = "drop table if exists " + TB_NOMBRE;
