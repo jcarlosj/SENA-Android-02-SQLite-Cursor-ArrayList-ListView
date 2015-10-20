@@ -16,6 +16,8 @@ public class DataBaseAdapter {
     //-> Atributos (Especiales)
     private DataBaseOpenHelper dbHelper;
     private SQLiteDatabase db;
+    private ContactosDataBaseManager dbmContactos;      //: Gestiona la tabla "contactos"
+    private BackupDataBaseManager dbmBackup;            //: Gestiona la tabla "backup"
 
     //-> Constructor
     public DataBaseAdapter( Context context ) {
@@ -25,6 +27,11 @@ public class DataBaseAdapter {
     //-> Métodos
     public void open() {
         this .db = dbHelper .getWritableDatabase();             //: Devuelve la BD establecida en modo escritura.
+
+        //-> Instanciamos las clases que gestionan las tablas de la aplicación pasandole
+        //   el objeto que establece la conexión a la BD
+        this .dbmContactos = new ContactosDataBaseManager( this .db );
+        this .dbmBackup = new BackupDataBaseManager( this .db );
     }
 
     public void close() {
@@ -42,7 +49,9 @@ public class DataBaseAdapter {
 
         @Override
         public void onCreate( SQLiteDatabase db ) {
-
+            //-> Sentenciamos la creación de las tablas
+                db .execSQL( dbmContactos .CREATE_TABLE );
+                db .execSQL( dbmBackup .CREATE_TABLE );
         }
 
         @Override
