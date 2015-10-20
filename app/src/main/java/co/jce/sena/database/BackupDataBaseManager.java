@@ -53,6 +53,9 @@ public class BackupDataBaseManager {
             + Columnas .APELLIDOS + " varchar( 30 ), "
             + Columnas .TELEFONO + " varchar( 25 )";
 
+    //   Define la sentencia de eliminación de la estructura de tabla con SQLite.
+    public final static String DELETE_TABLE = "drop table if exists " + TB_NOMBRE;
+
     //-> Contenedor de valores
     //   Algunos métodos de Android requieren que los datos sean pasados en objetos de este tipo.
     private ContentValues contenedorValores( String urlImagen, String nombres, String apellidos, String telefono ) {
@@ -80,6 +83,12 @@ public class BackupDataBaseManager {
         // implica que se inserta correctamente, por lo tanto lo que devolvemos
         // es si lo que devuelve el insert es superior o no a 0.
         return this .db .insert( TB_NOMBRE, null, valores ) > 0;
+    }
+
+    //-> Eliminar / Crear la tabla
+    public void reiniciarTabla() {
+        db .execSQL( DELETE_TABLE );
+        db .execSQL( CREATE_TABLE );
     }
 
     //-> Obtiene el listado de nombres en un Cursor
